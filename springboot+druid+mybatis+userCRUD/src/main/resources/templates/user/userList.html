@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>查询到的用户</title>
+</head>
+<body>
+<a href="/user/addUser">添加用户</a>
+<table>
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>登录名</th>
+        <th>性别</th>
+        <th>出生日期</th>
+        <th>详细地址</th>
+        <th>邮箱</th>
+        <th>创建时间</th>
+        <th>修改时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user:${users}">
+        <td th:text="${user.getId()}"></td>
+        <td th:text="${user.getMobile()}"></td>
+        <td th:text="${user.getSex()}"></td>
+        <td th:text="${user.getBirthdate()}"></td>
+        <td th:text="${user.getAddress()}"></td>
+        <td th:text="${user.getEmail()}"></td>
+        <td th:text="${user.getCreateTime()}"></td>
+        <!--/*@thymesVar id="getUpdateTime" type=""*/-->
+        <td th:text="${user.getUpdateTime()}"></td>
+        <td>
+            <a th:href="@{/user/}+@{/update/}+${user.id}">修改</a>
+            <a th:href="@{/user/}+@{/delete/}+${user.id}">删除</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>update</title>
+</head>
+<body>
+<h2>修改用户信息</h2>
+<form th:action="@{/user/updateUser}" method="post" >
+        <label>用户id</label>
+        <input name="id" th:value="${user.id}"><br><br>
+        <label>登录名</label>
+        <input name="mobile" th:value="${user.mobile}" ><br><br>
+        <label>密码</label>
+        <input name="password" th:value="${user.password}" ><br><br>
+        <label>邮箱</label>
+        <input name="email" type="email" th:value="${user.email}"><br><br>
+        <label>地址</label>
+        <input name="address" type="text" th:value="${user.address}"><br><br>
+        <label>性别</label>
+            <input class="form-check-input" type="radio" name="sex" value="男"
+                   th:checked="${user.sex=='男'}">
+            <label class="form-check-label">男</label>
+            <input class="form-check-input" type="radio" name="sex" value="女"
+                   th:checked="${user.sex=='女'}">
+            <label class="form-check-label">女</label><br><br>
+
+        <label>出生时间</label>
+        <input name="birthdate" type="text" th:value="${#dates.format(user.birthdate,'yyyy/MM/dd HH:mm:ss')}" autocomplete="off"><br><br>
+    <label>创建时间</label>
+    <input name="createTime" type="text" th:value="${#dates.format(user.birthdate,'yyyy/MM/dd HH:mm:ss')}" autocomplete="off"><br><br>
+    <label>修改时间</label>
+    <input name="updateTime" type="text" th:value="${#dates.format(user.birthdate,'yyyy/MM/dd HH:mm:ss')}" autocomplete="off">
+    <button type="submit" class="btn btn-primary">修改</button>
+</form>
+</body>
+</html>
